@@ -1,0 +1,33 @@
+<%= stylesheet_link_tag "application" %>
+<h1>Final Result</h1>
+
+<p>Total # of rows in database:
+<%=@twitter.length %>  
+</p>
+
+<%= link_to 'Refresh', forajaxs_path %>
+<p>I spent the last few minutes on some css staff so the table looks like a table.</p>
+<p>That's it!~The result that we want. However, it not 100% accurate even if we set up some rules to filter the twitter people search result</P>
+<p>Again, for the certainly level, the less, the better, which means that 0 is the best and 5 is nearly incredible</P>
+<p>Thank you for your time</p>
+<p>I hope that I passed the first task.</p>
+
+<table id="hor-minimalist-b">
+  <tr>
+    <th>Name</th>
+    <th>Link</th>
+    <th>Verified?</th>
+    <th># of fans</th>
+    <th>Certainty(the less, the better)</th>	
+  </tr>
+ 
+  <% @twitter.each do |t| %>
+    <tr>
+      <td><%= t.name %></td>
+      <td><%= t.link %></td>
+	<td><%=t.verified %></td>
+   	<td><%=t.fans%></td>
+	<td><%=t.certaintylevel%></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,12 @@
+<%= form_for :crawler, url: crawlers_path do |f| %>
+  <p>
+    <%= f.label :linktocrawl %><br>
+    <%= f.text_field :linktocrawl %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<p>I already embedded the link in the code, you can input whatever you want here. If successfully crawled the link, whatever you entered will be returned</p>

@@ -1,0 +1,2 @@
+module GuideesHelper
+end

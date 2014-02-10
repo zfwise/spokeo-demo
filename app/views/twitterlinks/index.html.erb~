@@ -1,0 +1,28 @@
+<h1>Listing All Famous People's Twitter Link:</h1>
+
+<h3>The first I have done: followed the RoR online guide and created the app without the crawler</h3>
+<p>This is basically the CRUD of the Database.</p>
+<p>You can play around those add, edit and delete operations.</p>
+
+<p>Once you done with this section, <%= link_to 'click here to go to the crawler part', guides_path %></p>
+
+
+<%= link_to 'New Twitter Celebrity', new_twitterlink_path %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Link</th>
+  </tr>
+ 
+  <% @twitter.each do |t| %>
+    <tr>
+      <td><%= t.name %></td>
+      <td><%= t.link %></td>
+	<td><%= link_to 'Show', t %></td>
+   	<td><%= link_to 'Edit', edit_twitterlink_path(t) %></td>
+	<td><%= link_to 'Delete', twitterlink_path(t),
+                    method: :delete, data: { confirm: 'You cannot be sure!' } %></td>
+    </tr>
+  <% end %>
+</table>

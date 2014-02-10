@@ -1,0 +1,24 @@
+<h1>Hi, one more thing before we proceed</h1>
+<h3>Twitter's "Fair Usage of API" says that one Twitter App can only make 180 calls in 15 minutes... ...</h3>
+<p>But I have 1587 calls to make....It leaves me no choice but created 6 apps myself and ask my friend created 3 for me, in total, I have 9</p>
+<p>Also, in case that Twitter block me or my IP, I think I should play safe by using two Amazon EC2 instances</p>
+<p>So, I created another EC2 instance and transfer half of the workload to my "brother" instance.</p>
+<p>This is safe and also, save your time since I kind of doubled the speed.</p>
+
+<h3>RoR can't process task concurrently by default</h3>
+<p>As long as the crawl starts, you won't be able to see what's going on since the browser will waiting for the server to render the result but the 
+server is busy in crawling... My first thought was to use Ajax to fetch the progress and display some info. So at least you can see that the crawler is actually working....</p>
+<p>However, RoR can't process multi-task by default for thread safety concern<a href="http://bibwild.wordpress.com/2013/02/18/rails-and-concurrent-request-handling/">See here</a>. I have to use some other RoR server to make it concurrent capable. I don't have time to do so. And I give you a simple solution here:</p>
+<p>I downloaded phpmyadmin and created an identity for you: spokeo. password is also spokeo1. I granted the least privilege(also, for security concert. ^_^) so you can see the #of rows in the database table</p>
+<p>Follow this <a href="http://54.193.23.165/phpmyadmin/" target="_blank">link</a>, left side, click the database:webspider and you can see that the table:twitterlinkmores is increasing in rows</p>
+
+<h3>Finally, lets go!~<h3>
+<p><a href="http://54.193.76.165:3000/crawlers/new" target="_blank">Click this link</a> and you will have the brother instance, input anything you want and it will start</p>
+<p><%= link_to 'click here to start crawler on this server', new_crawler_path, :target=>"new"%>. When both finish, you will see the letters you entered.</p>
+
+<h4>Result</h4>
+<h4>It takes only minutes to finish. Please allow them to finish before you click the link below to see the results</h4>
+<p>Even if you click the link below, you still won't get the result since I mentioned before: no concurrent request handling</p>
+<p>While waiting, here is the link to my linkedin: http://www.linkedin.com/pub/fan-zhang/48/62a/18a</p>
+<p>Here is the link to my homepage when I was a student: http://www.student.seas.gwu.edu/~zfwise/</p>
+<%= link_to 'Result', forajaxs_path %>

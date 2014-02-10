@@ -1,0 +1,10 @@
+require 'active_record'
+
+class ForajaxsController < ApplicationController
+
+def index
+	@twitter = Twitterlinkmore.all
+end
+
+
+end

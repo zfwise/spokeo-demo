@@ -1,0 +1,32 @@
+<h1>Hello, again</h1>
+<h2>Before we actually crawl, let me introduce the library I'm using:</h2>
+<ul>
+<li> I use a tool called "Nokogiri" to parse HTML. 
+Basically, given the wiki page with list of people, I use <B>Nokogiri's CSS parser</B> to find the names</li>
+<li> After I get the names, I use <B>Ruby Twitter API</B> developped by sferik to make "people search" calls to Twitter's API</li>
+<li> I also use the mysql2 as the adaptor</li>
+</ul>
+
+<h2>Also, some celebrities may have no twitter accout, some of their name will lead to some other twitter accounts, I expand the database table to record more info</h2>
+<ul>
+<li>name: of course, I record name</li>
+<li>link: the link for the celebrities</li>
+<li>verified: whether this account is verified or not. Usually, celebrites' account is verified. This should be true</li>
+<li>fans: number of followers, celebrities should have thousands or tens of thousands</li>
+<li>certaintylevel: 0 means highly sure that the link is correct, 5 means nearly inpossible to be true</li>
+</ul>
+
+<h2>Here are the rules that I filter the Twitter people search result:</h2>
+<ul>
+<li>1. Read only the first five tuple returned by Twitter. First come, first serve</li>
+<li>2. verified should be 'true'</li>
+<li>3. fans should be >= 1000</li>
+<li>4. certaintylevel should be small, 0 is desired. Here is what does the numbers mean</li>
+	<ul>
+		<li>0: the link in the first tuple is verified and has more than 1000 fans</li>
+		<li>1-4: the link in the second-fifth tuple is verified and has more than 1000 fans</li>
+		<li>5: none of the five result meet my threshold, take the first tuple and set this field to 5, which means very very not sure.</li>
+	</ul>
+</ul>
+
+ <%= link_to 'Stop talking! Let's crawl~', guidees_path %>
